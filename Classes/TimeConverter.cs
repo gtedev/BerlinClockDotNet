@@ -43,7 +43,7 @@ namespace BerlinClock
             {
                 // Example of result = "Y\r\nOOOO\r\nOOOO\r\nOOOOOOOOOOO\r\nOOOO"
 
-                string secondLamp = "Y";
+                var secondLampString = "Y";
                 var fiveHourLampString = new String('O', 4);
                 var oneHourLampString = new String('O', 4);
                 var fiveMinuteLampString = new String('O', 11);
@@ -62,7 +62,7 @@ namespace BerlinClock
 
                 #region Seconds
 
-                secondLamp = lightingScheme.IsSecondLampSwitchOn ? "Y" : "O";
+                secondLampString = lightingScheme.IsSecondLampSwitchOn ? "Y" : "O";
 
                 #endregion
 
@@ -89,7 +89,7 @@ namespace BerlinClock
 
                 #endregion
 
-                return secondLamp + "\r\n" +
+                return secondLampString + "\r\n" +
                        fiveHourLampString + "\r\n" +
                        oneHourLampString + "\r\n" +
                        fiveMinuteLampString + "\r\n" +
@@ -98,7 +98,7 @@ namespace BerlinClock
 
             public BerlinClockLightingScheme GetLightingScheme(int hours, int minutes, int seconds)
             {
-                var lightScheme = new BerlinClockLightingScheme
+                var lightingScheme = new BerlinClockLightingScheme
                 {
                     IsSecondLampSwitchOn = seconds % 2 == 0,
                     FiveHourLampToSwitchOnNumber = hours / 5,
@@ -108,7 +108,7 @@ namespace BerlinClock
                     OneMinuteLampToSwitchOnNumber = minutes % 5
                 };
 
-                return lightScheme;
+                return lightingScheme;
             }
 
             public bool isDateRangeValid(int hours, int minutes, int seconds)
